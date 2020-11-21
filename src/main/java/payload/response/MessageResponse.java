@@ -1,4 +1,4 @@
-package com.weeznha.leowallet.response;
+package payload.response;
 
 import lombok.Data;
 

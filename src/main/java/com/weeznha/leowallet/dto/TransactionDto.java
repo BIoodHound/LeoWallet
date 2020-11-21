@@ -1,7 +1,10 @@
 package com.weeznha.leowallet.dto;
 
+import lombok.Data;
+
+@Data
 public class TransactionDto {
-    String sender;
-    String recipient;
-    Integer balance;
+    private String sender;
+    private String recipient;
+    private Integer balance;
 }
