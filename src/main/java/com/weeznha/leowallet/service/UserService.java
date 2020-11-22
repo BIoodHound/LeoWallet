@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -44,19 +43,13 @@ public class UserService {
                 .stream()
                 .filter(user -> user.getUserName().equalsIgnoreCase(userDto.getUserName()))
                 .collect(Collectors.toList());
-        if (users.isEmpty()){
-            //TODO add exception
-            return false;
-        }
-        return true;
+        //TODO add exception
+        return !users.isEmpty();
     }
 
-    public User getUser(UserDto userDto){
-        Optional<User> user = userRepository.findByUserName(userDto.getUserName());
-        if(user.isPresent()){
-            return user.get();
-        }
-        //TODO throw exception
-        return null;
+    public User getUserByUsername(String username){
+        List<User> userList = userRepository.findByUserName(username);
+        return userList.get(0);
     }
+
 }
